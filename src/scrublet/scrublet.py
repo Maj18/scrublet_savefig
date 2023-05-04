@@ -474,7 +474,7 @@ class Scrublet():
 
     ######## Viz functions ########
 
-    def plot_histogram(self, scale_hist_obs='log', scale_hist_sim='linear', fig_size = (8,3)):
+    def plot_histogram(self, scale_hist_obs='log', scale_hist_sim='linear', fig_size = (8,3), fig_name="doublet_score_histograms.png"):
         ''' Plot histogram of doublet scores for observed transcriptomes and simulated doublets 
 
         The histogram for simulated doublets is useful for determining the correct doublet 
@@ -505,6 +505,7 @@ class Scrublet():
         ax.set_ylabel('Prob. density')
 
         fig.tight_layout()
+        fig.savefig(fig_name)
 
         return fig, axs
 
@@ -513,7 +514,7 @@ class Scrublet():
         self._embeddings[embedding_name] = coordinates
         return
 
-    def plot_embedding(self, embedding_name, score='raw', marker_size=5, order_points=False, fig_size=(8,4), color_map=None):
+    def plot_embedding(self, embedding_name, score='raw', marker_size=5, order_points=False, fig_size=(8,4), color_map=None, fig_name="umap.png"):
         ''' Plot doublet predictions on 2-D embedding of observed transcriptomes '''
 
         #from matplotlib.lines import Line2D
@@ -577,6 +578,7 @@ class Scrublet():
         ax.set_ylabel(embedding_name + ' 2')
 
         fig.tight_layout()
+        fig.savefig(fig_name)
 
         return fig, axs
 
